@@ -1,4 +1,12 @@
-import { createTheme, Button, ThemeProvider, CssBaseline } from "@mui/material";
+ 
+import {
+  createTheme,
+  Button,
+  ThemeProvider,
+  CssBaseline,
+
+} from "@mui/material";
+import AppBarr from "components/AppBar";
 import { useMemo, useState } from "react";
 import getDesignTokens from "styles/MyTheme";
 
@@ -10,11 +18,16 @@ function App() {
       ? "light"
       : "dark"
   );
+  
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
+        <AppBarr/>
+        <br/>
+        <br/>
+        <br/>
         <Button
           onClick={() => {
             localStorage.setItem(
@@ -29,6 +42,7 @@ function App() {
         >
           Change theme
         </Button>
+    
       </div>
     </ThemeProvider>
   );
