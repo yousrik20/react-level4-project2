@@ -145,8 +145,9 @@ export default function AppBarr() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", md: "flex" },alignItems:'center' }}>
             <IconButton
+            sx={{width:'37px',height:'37px'}}
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -155,7 +156,7 @@ export default function AppBarr() {
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton size="large" color="inherit">
+            <IconButton size="large" color="inherit" sx={{width:'37px',height:'37px'}}>
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
