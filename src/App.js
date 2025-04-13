@@ -1,28 +1,27 @@
 import {
   createTheme,
-  Button,
+
   ThemeProvider,
   CssBaseline,
-  Grid,
-  styled,
-  Paper,
+  Stack,
+  Typography,
 } from "@mui/material";
 import AppBarr from "components/AppBar";
+import MyList from "components/List";
 import { useMemo, useState } from "react";
 import getDesignTokens from "styles/MyTheme";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: (theme.vars ?? theme).palette.text.secondary,
-  ...theme.applyStyles('dark', {
-    backgroundColor: '#1A2027',
-  }),
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: "#fff",
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   color: (theme.vars ?? theme).palette.text.secondary,
+//   ...theme.applyStyles("dark", {
+//     backgroundColor: "#1A2027",
+//   }),
+// }));
 function App() {
-
   const [mode, setmyMOde] = useState(
     localStorage.getItem("currentMode") === null
       ? "dark"
@@ -36,42 +35,17 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBarr />
-     
-      <br />
-      <br />
-      <br />
-      <Grid container spacing={2}>
-        <Grid size={{xs:8,md:12}}>
-          <Item>size=8</Item>
-        </Grid>
-        <Grid size={4}>
-          <Item>size=4</Item>
-        </Grid>
-        <Grid size={4}>
-          <Item>size=4</Item>
-        </Grid>
-        <Grid size={8}>
-          <Item>size=8</Item>
-        </Grid>
-      </Grid>
-      <br />
-      <br />
-      <br />
 
-      <Button
-        onClick={() => {
-          localStorage.setItem(
-            "currentMode",
-            theme.palette.mode === "dark" ? "light" : "dark"
-          );
+      <Stack direction={"row"}>
+        <MyList setmyMOde={setmyMOde} theme={theme} />
+        <Typography sx={{ flexGrow: "3" ,height:"1300px"}} className="border" variant="h6">
+          box2
+        </Typography>
+        <Typography sx={{ flexGrow: "2" }} className="border" variant="h6">
+          box3
+        </Typography>
+      </Stack>
 
-          setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
-        }}
-        variant="text"
-        color="primary"
-      >
-        Change theme
-      </Button>
     </ThemeProvider>
   );
 }
