@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import AppBarr from "components/AppBar";
 import MyList from "components/List";
+import Posts from "components/Posts";
 import { useMemo, useState } from "react";
 import getDesignTokens from "styles/MyTheme";
 
@@ -39,13 +40,7 @@ function App() {
 
         <Stack direction={"row"}>
           <MyList setmyMOde={setmyMOde} theme={theme} />
-          <Typography
-            sx={{ flexGrow: "3", height: "1300px" }}
-            className="border myColor"
-            variant="h6" 
-          >
-            box2
-          </Typography>
+          <Posts/>
           <Typography sx={{ flexGrow: "2" }} className="border" variant="h6">
             box3
           </Typography>
