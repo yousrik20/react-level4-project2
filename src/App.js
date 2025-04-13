@@ -1,10 +1,10 @@
 import {
   createTheme,
-
   ThemeProvider,
   CssBaseline,
   Stack,
   Typography,
+  Box,
 } from "@mui/material";
 import AppBarr from "components/AppBar";
 import MyList from "components/List";
@@ -34,18 +34,23 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBarr />
+      <Box className={theme.palette.mode}>
+        <AppBarr />
 
-      <Stack direction={"row"}>
-        <MyList setmyMOde={setmyMOde} theme={theme} />
-        <Typography sx={{ flexGrow: "3" ,height:"1300px"}} className="border" variant="h6">
-          box2
-        </Typography>
-        <Typography sx={{ flexGrow: "2" }} className="border" variant="h6">
-          box3
-        </Typography>
-      </Stack>
-
+        <Stack direction={"row"}>
+          <MyList setmyMOde={setmyMOde} theme={theme} />
+          <Typography
+            sx={{ flexGrow: "3", height: "1300px" }}
+            className="border myColor"
+            variant="h6" 
+          >
+            box2
+          </Typography>
+          <Typography sx={{ flexGrow: "2" }} className="border" variant="h6">
+            box3
+          </Typography>
+        </Stack>
+      </Box>
     </ThemeProvider>
   );
 }

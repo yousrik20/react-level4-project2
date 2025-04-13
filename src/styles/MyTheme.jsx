@@ -15,7 +15,7 @@ const getDesignTokens = (mode) => ({
           },
 
           favColor: {
-            main: grey[300],
+            main: "rgb(247,247,247)"
           },
         }
       : {
@@ -25,7 +25,7 @@ const getDesignTokens = (mode) => ({
           },
 
           favColor: {
-            main: grey[800],
+            main: null,
           },
         }),
   },
