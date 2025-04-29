@@ -70,7 +70,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function MyList({ setmyMOde, theme }) {
+export default function MyList({ setmyMOde, theme ,showList,setShowList}) {
   const myList = [
     { title: "Home", icon: <Home /> },
     { title: "Pages", icon: <Article /> },
@@ -82,10 +82,12 @@ export default function MyList({ setmyMOde, theme }) {
   ];
   return (
     <Box
+    className="myList"
       sx={{
+        minWidth:'222px',
         bgcolor: theme.palette.favColor.main,
         flexGrow: 2,
-        display: { xs: "none", md: "block" },
+        display: { xs: showList, md: "block" },
       }}
     >
       <List sx={{ position: "fixed" }}>

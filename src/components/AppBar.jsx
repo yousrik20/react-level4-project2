@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Avatar } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function AppBarr() {
+export default function AppBarr({showList,setShowList}) {
   const refMenuMobile = useRef(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
  
@@ -124,8 +125,11 @@ export default function AppBarr() {
   
       <AppBar position="sticky">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-            <MenuIcon />
+          <IconButton onClick={() => {
+            showList=== 'none' ? setShowList('block') : setShowList('none')
+             }} size="large" edge="start" color="inherit" sx={{ mr: 2 ,display:{xs:"flex",md:'none'}}}>
+            
+            {showList==='block' ? <CloseIcon/> : <MenuIcon />}
           </IconButton>
           <Typography
             variant="h6"

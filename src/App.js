@@ -3,7 +3,6 @@ import {
   ThemeProvider,
   CssBaseline,
   Stack,
-  Typography,
   Box,
 } from "@mui/material";
 import AppBarr from "components/AppBar";
@@ -33,14 +32,15 @@ function App() {
   );
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const [showList,setShowList]=useState("none")
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className={theme.palette.mode}>
-        <AppBarr />
+        <AppBarr showList={showList} setShowList={setShowList} />
 
         <Stack direction={"row"}>
-          <MyList setmyMOde={setmyMOde} theme={theme} />
+          <MyList showList={showList} setShowList={setShowList}  setmyMOde={setmyMOde} theme={theme} />
           <Posts/>
           <RightBar theme={theme}/>
         </Stack>
