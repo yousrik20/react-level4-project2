@@ -5,6 +5,7 @@ import {
   Stack,
   Box,
 } from "@mui/material";
+import AddPost from "components/AddPost";
 import AppBarr from "components/AppBar";
 import MyList from "components/List";
 import Posts from "components/Posts";
@@ -44,6 +45,7 @@ function App() {
           <Posts/>
           <RightBar theme={theme}/>
         </Stack>
+        <AddPost/>
       </Box>
     </ThemeProvider>
   );
