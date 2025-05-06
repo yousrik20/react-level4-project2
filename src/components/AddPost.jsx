@@ -18,7 +18,7 @@ import VideoCameraBackIcon from "@mui/icons-material/VideoCameraBack";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import ImageIcon from "@mui/icons-material/Image";
 import DateRangeIcon from "@mui/icons-material/DateRange";
-export default function () {
+export default  function AddPost () {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -52,7 +52,7 @@ export default function () {
             left: "50%",
             transform: "translate(-50%,-50%)",
             bgcolor: theme.palette.background.default,
-            width: 377,
+            width: {xs:'97%',sm:'399px'},
             padding: "22px",
             borderRadius: "6px",
           }}

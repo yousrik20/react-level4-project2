@@ -82,6 +82,7 @@ export default function MyList({ setmyMOde, theme ,showList,setShowList}) {
   ];
   return (
     <Box
+    component="nav"
     className="myList"
       sx={{
         minWidth:'222px',
@@ -116,11 +117,11 @@ export default function MyList({ setmyMOde, theme ,showList,setShowList}) {
               inputProps={{
                 "aria-labelledby": "switch-list-label-wifi",
               }}
-              sx={{ m: 1 }}
+              sx={{ mt: 1 ,mr:1}}
               defaultChecked={theme.palette.mode === "dark"}
             />
           </ListItemIcon>
-          <ListItemText primary={theme.palette.mode} sx={{textTransform:'capitalize'}} />
+          <ListItemText primary={`${theme.palette.mode} mode`} sx={{textTransform:'capitalize'}} />
         </ListItem>
       </List>
     </Box>

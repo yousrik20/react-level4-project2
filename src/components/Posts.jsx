@@ -11,35 +11,35 @@ import Typography from "@mui/material/Typography";
 
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Box, Checkbox, Menu, MenuItem } from "@mui/material";
+import { Box, Checkbox, Menu, MenuItem, useTheme } from "@mui/material";
 import { Bookmark, BookmarkBorder, Favorite, FavoriteBorder } from "@mui/icons-material";
 
 export default function Posts() {
   const myCards = [
     {
       letter: "A",
-      color: "purple",
+      color: "#053ea8",
       username: "Ali Hassan",
       imgLink:
         "https://images.pexels.com/photos/30548780/pexels-photo-30548780/free-photo-of-artist-painting-with-vibrant-colors-in-studio.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
       letter: "N",
-      color: "teal",
+      color: "#a020f0",
       username: "Alaa Hassan",
       imgLink:
         "https://images.pexels.com/photos/30989951/pexels-photo-30989951/free-photo-of-lawson-convenience-store-in-snowy-night-japan.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
       letter: "D",
-      color: "#f09",
+      color: "#008080",
       username: "Doaa Hassan",
       imgLink:
         "https://images.pexels.com/photos/28617427/pexels-photo-28617427/free-photo-of-elegant-presentation-of-turkish-tea-in-sunlit-room.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
       letter: "M",
-      color: "royalblue",
+      color: "#053ea8",
       username: "Walaa Hassan",
       imgLink:
         "https://images.pexels.com/photos/29107893/pexels-photo-29107893/free-photo-of-traditional-berber-man-in-ksar-of-ait-benhaddou.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -61,14 +61,15 @@ export default function Posts() {
     </Menu>
   );
 
+  const theme=useTheme();
   return (
-    <Box sx={{ flexGrow: "3" }}>
+    <Box sx={{ flexGrow: "3" }} component="main">
       {myCards.map((item) => {
         return (
-          <Card sx={{ maxWidth: 444, mx: "auto", my: 5 }}>
+          <Card key={item.imgLink} sx={{ maxWidth: {xs:'97%',sm:'444px'}, mx: "auto", my: 5 }}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: item.color }} aria-label="recipe">
+                <Avatar sx={{ color:theme.palette.getContrastText(item.color),bgcolor: item.color }} aria-label="recipe">
                   {item.letter}
                 </Avatar>
               }

@@ -16,7 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Avatar } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,24 +56,37 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function AppBarr({showList,setShowList}) {
+export default function AppBarr({ showList, setShowList }) {
   const refMenuMobile = useRef(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
- 
-  const refMenu= useRef(null);
+
+  const refMenu = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
- 
+
   const renderMenu = (
     <Menu
       anchorEl={refMenu.current}
       open={showMenu}
-      onClose={()=>{setShowMenu(false)}}
+      onClose={() => {
+        setShowMenu(false);
+      }}
     >
-      <MenuItem onClick={()=>{setShowMenu(false)}}>Profile</MenuItem>
-      <MenuItem onClick={()=>{setShowMenu(false)}}>My account</MenuItem>
+      <MenuItem
+        onClick={() => {
+          setShowMenu(false);
+        }}
+      >
+        Profile
+      </MenuItem>
+      <MenuItem
+        onClick={() => {
+          setShowMenu(false);
+        }}
+      >
+        My account
+      </MenuItem>
     </Menu>
   );
-
 
   const renderMobileMenu = (
     <Menu
@@ -122,77 +135,89 @@ export default function AppBarr({showList,setShowList}) {
     </Menu>
   );
   return (
-  
-      <AppBar position="sticky">
-        <Toolbar>
-          <IconButton onClick={() => {
-            showList=== 'none' ? setShowList('block') : setShowList('none')
-             }} size="large" edge="start" color="inherit" sx={{ mr: 2 ,display:{xs:"flex",md:'none'}}}>
-            
-            {showList==='block' ? <CloseIcon/> : <MenuIcon />}
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+    <AppBar position="sticky">
+      <Toolbar>
+        <IconButton
+          onClick={() => {
+            showList === "none" ? setShowList("block") : setShowList("none");
+          }}
+          size="large"
+          edge="start"
+          color="inherit"
+          sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
+        >
+          {showList === "block" ? <CloseIcon /> : <MenuIcon />}
+        </IconButton>
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ display: { xs: "none", sm: "block" } }}
+        >
+          WeShare
+        </Typography>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
+        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+          <IconButton
+            sx={{ width: "37px", height: "37px" }}
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
           >
-            WeShare
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+            <Badge badgeContent={4} color="error">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+          <IconButton
+            size="large"
+            color="inherit"
+            sx={{ width: "37px", height: "37px" }}
+          >
+            <Badge badgeContent={17} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton
+            ref={refMenu}
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+            size="large"
+            edge="end"
+            color="inherit"
+          >
+            <Avatar
+              sx={{ width: "37px", height: "37px" }}
+              src="./images/1.png"
             />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" },alignItems:'center' }}>
-            <IconButton
-            sx={{width:'37px',height:'37px'}}
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton size="large" color="inherit" sx={{width:'37px',height:'37px'}}>
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              ref={refMenu}
-              onClick={()=>{setShowMenu(!showMenu)}}
-              size="large"
-              edge="end"
-              color="inherit"
-            >
-             <Avatar sx={{width:'37px',height:'37px'}} src="./images/1.png"/>
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              ref={refMenuMobile}
-              size="large"
-              aria-label="show more"
-              aria-haspopup="true"
-              color="inherit"
-              onClick={() => {
-                setShowMobileMenu(!showMobileMenu);
-              }}
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-        {renderMenu}
-        {renderMobileMenu}
-      </AppBar>
-      
+          </IconButton>
+        </Box>
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <IconButton
+            ref={refMenuMobile}
+            size="large"
+            aria-label="show more"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={() => {
+              setShowMobileMenu(!showMobileMenu);
+            }}
+          >
+            <MoreIcon />
+          </IconButton>
+        </Box>
+      </Toolbar>
+      {renderMenu}
+      {renderMobileMenu}
+    </AppBar>
   );
 }

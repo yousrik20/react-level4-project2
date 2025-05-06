@@ -4,7 +4,9 @@ import {
   CssBaseline,
   Stack,
   Box,
+  Divider,
 } from "@mui/material";
+
 import AddPost from "components/AddPost";
 import AppBarr from "components/AppBar";
 import MyList from "components/List";
@@ -13,16 +15,8 @@ import RightBar from "components/RightBar";
 import { useMemo, useState } from "react";
 import getDesignTokens from "styles/MyTheme";
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: "#fff",
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: (theme.vars ?? theme).palette.text.secondary,
-//   ...theme.applyStyles("dark", {
-//     backgroundColor: "#1A2027",
-//   }),
-// }));
+
+
 function App() {
   const [mode, setmyMOde] = useState(
     localStorage.getItem("currentMode") === null
@@ -33,19 +27,26 @@ function App() {
   );
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-  const [showList,setShowList]=useState("none")
+  const [showList, setShowList] = useState("none");
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className={theme.palette.mode}>
         <AppBarr showList={showList} setShowList={setShowList} />
 
-        <Stack direction={"row"}>
-          <MyList showList={showList} setShowList={setShowList}  setmyMOde={setmyMOde} theme={theme} />
-          <Posts/>
-          <RightBar theme={theme}/>
+        <Stack
+          direction={"row"}
+          divider={<Divider orientation="vertical" flexItem />}
+        >
+          <MyList
+            {...{ showList, setShowList, setmyMOde, theme }}
+          
+          />
+          <Posts />
+          <RightBar theme={theme} />
         </Stack>
-        <AddPost/>
+        <AddPost />
       </Box>
     </ThemeProvider>
   );
